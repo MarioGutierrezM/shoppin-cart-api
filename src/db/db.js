@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 module.exports = config => new Promise((resolve, reject) => {
-    mongoose.connect(`mongodb://${config.domain}/${config.dbName}`);
+    mongoose.connect( process.env.MONGODB_URI ||`mongodb://${config.domain}/${config.dbName}`);
     mongoose.Promise = global.Promise;
 
     var db = mongoose.connection;
